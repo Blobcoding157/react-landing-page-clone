@@ -5,10 +5,36 @@ const bannerStyles = css`
   background-color: #f9f7f1;
   color: #000;
   display: flex;
+  z-index: 3;
   flex-direction: row;
   align-items: center;
+  position: static;
   justify-content: space-between;
   padding: 1.5rem;
+
+  @media (min-width: 768px) {
+    padding: 1.7rem 3.45rem;
+  }
+`;
+const logoContainer = css`
+  cursor: pointer;
+  padding: 0.3rem;
+  transition: opacity 0.2s ease;
+`;
+
+const logoElement = css`
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  width: initial;
+  height: initial;
+  background: none;
+  opacity: 1;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  max-width: 100%;
 `;
 
 const navElementStyles = css`
@@ -18,7 +44,8 @@ const navElementStyles = css`
 
   cursor: pointer;
   font-size: 1.15rem;
-
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: Inter;
   font-weight: 400;
   user-select: none;
   &:hover {
@@ -48,8 +75,9 @@ const navigationStyles = css`
 export default function HeadBanner() {
   return (
     <section css={bannerStyles}>
-      <div>
+      <div css={logoContainer}>
         <img
+          css={logoElement}
           alt="Landa"
           src="https://landa.app/_next/static/media/landa.25a72dc7.svg"
         />

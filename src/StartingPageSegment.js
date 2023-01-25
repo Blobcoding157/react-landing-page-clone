@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { QRCodeSVG } from 'qrcode.react';
 import hero from './media/hero.mp4';
+import QRcode from './media/qrcode.png';
 
 const mainLeft = css``;
 
@@ -13,6 +13,7 @@ const container = css`
 const containterContainingContainer = css`
   max-width: 1200px;
   margin: auto;
+
   @media (min-width: 768px) {
     min-width: 980px;
     max-width: 1400px;
@@ -135,6 +136,7 @@ const downloaderScanArrowInnerStyles = css`
   box-sizing: border-box;
   display: block;
   width: initial;
+  overflow: hidden;
   height: initial;
   background: none;
   opacity: 1;
@@ -143,14 +145,40 @@ const downloaderScanArrowInnerStyles = css`
   padding: 0;
   max-width: 100%;
 `;
+const downloaderQrCodeContainerStyles = css`
+  border-radius: 6px;
+  overflow: hidden;
+  margin-left: 3rem;
+
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
+`;
+const downloaderQrCodeStyles = css`
+  height: 170px;
+  width: 170px;
+  display: block;
+
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
+`;
 
 const heroContainer = css`
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+`;
+const theHero = css`
   width: 100%;
   overflow: hidden;
   position: relative;
 `;
-const theHero = css`
+const heroVideo = css`
   width: 100%;
+  object-fit: contain;
+  @media (min-width: 768px) {
+    width: 900px;
+  }
 `;
 
 export default function StartingPageSegment() {
@@ -193,6 +221,9 @@ export default function StartingPageSegment() {
                     </span>
                   </div>
                 </div>
+                <div css={downloaderQrCodeContainerStyles}>
+                  <img css={downloaderQrCodeStyles} alt="QRcode" src={QRcode} />
+                </div>
               </div>
             </div>
           </div>
@@ -200,7 +231,7 @@ export default function StartingPageSegment() {
 
         <div css={heroContainer}>
           <video autoPlay muted loop playsInline css={theHero}>
-            <source src={hero} type="video/mp4" />
+            <source css={heroVideo} src={hero} type="video/mp4" />
           </video>
         </div>
       </div>
